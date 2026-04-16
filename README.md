@@ -1,4 +1,4 @@
-### LIFE4136-Rotation2: RNA-seq Analysis Pipeline: Trypanosomes and Human Data
+# LIFE4136-Rotation2: RNA-seq Analysis Pipeline: Trypanosomes and Human Data
 
 This repository contains an RNA-Seq workflow produced for LIFE4136 Rotation 2 Coursework. The study includes Trypanosome blood and in vitro samples, as well as human cancer samples of adenocarcinoma and hepatocellular carcinoma.
 
@@ -53,7 +53,7 @@ The Trypanosome pipeline is a core RNA-Seq workflow that includes quality contro
 
 This is a 7-step pipeline for the trypanosomes analysis that contains the full workflow needed to obtain DESeq2 results of the in vitro and blood samples. Some steps contain 2 scripts (e.g., 1a and 1b), as “a” corresponds to in vitro samples and “b” corresponds to blood samples, so be sure to run both. Upon successful completion of a script, any files or results produced by the final step of the pipeline should be found in the trypanosomes directory. Files produced throughout the pipeline can be found in their respective subdirectories within the trypanosomes folder.
 
-# FastQC Quality Control
+### FastQC Quality Control
 
 This script is the first step of the pipeline that uses FastQC to analyse the quality of the raw blood and in vitro FASTQ files selected for the analysis. This script provides FastQC HTML reports, which can be downloaded and viewed to assess the quality of each sample. A range of statistics can be assessed by these reports, including per-base sequence quality, per-sequence GC content, overrepresented sequences, and much more. Reports can be found in the “/fastqc/in_vitro” and “/fastqc/blood” directories.
 
@@ -61,7 +61,7 @@ Input: Raw FASTQ sample files
 
 Output: FastQC reports
 
-# Read Trimming with Trim Galore
+### Read Trimming with Trim Galore
 
 This next script uses Trim Galore to trim the reads by removing any low-quality bases and adapter sequences from the reads. This provides updated trimmed reports of each sample and trimmed reads that have been quality-controlled for further use in the pipeline. Reports and trimmed data can be found in the “/trim_galore/in_vitro” and “/trim_galore/blood” directories.
 
@@ -69,7 +69,7 @@ Input: Raw FASTQ files
 
 Output: Trimmed FASTQ files and Trimmed FastQC reports (txt and html)
 
-# Reference Indexing with Bowtie2-build
+### Reference Indexing with Bowtie2-build
 
 This script utilises Bowtie2-build to create an index from the reference genome file “TriTrypDB-68_TbruceiTREU927_Genome.fasta” for use downstream in the pipeline. The indexed files can be found in the “/references_files/index” directory.
 
@@ -78,7 +78,7 @@ Input: Reference genome
 Output: Bowtie2 index files
 
 
-# Read Mapping with Bowtie2
+### Read Mapping with Bowtie2
 
 This step uses a script to map reads from in vitro and blood samples to the indexed reference genome, producing SAM files for both sample types. SAM files can be found in the “/mapping_bowtie2/sam_files_in_vitro” and “/mapping_bowtie2/sam_files_blood” directories.
 
@@ -88,7 +88,7 @@ Reference: Indexed genome
 
 Output: SAM files
 
-# Conversion from SAM to BAM, Sorting and Indexing with SAMtools
+### Conversion from SAM to BAM, Sorting and Indexing with SAMtools
 
 This script uses SAMtools to first convert the SAM files for samples into BAM files for downstream use, and then sort and index the files. The converted BAM files can be found in the “/mapping_bowtie2/bam_files/in_vitro” and “/mapping_bowtie2/bam_files/blood” directories. The sorted and indexed files can be found in the “/mapping_bowtie2/bam_files/in_vitro/sorted” and “/mapping_bowtie2/bam_files/blood/sorted” directories.
 
@@ -96,7 +96,7 @@ Input: SAM files
 
 Output: BAM files, sorted BAM files and index bam.bai files
 
-# Sample Counting with HTSeq
+### Sample Counting with HTSeq
 
 This stage involves a script that applies HTSeq-count on each sorted BAM file for the samples, along with a “TriTrypDB-68_TbruceiTREU927.gff” file as an annotation file. The count text file for each sample can be found in “/htseq/in_vitro” and “/htseq/blood” directories. The gff file is located in the reference files (“/references_files”).
 
@@ -106,7 +106,7 @@ Annotation input: gff file
 
 Output: Count text (txt) files
 
-# Differential Expression Analysis with DESeq2 and R Studio Packages
+### Differential Expression Analysis with DESeq2 and R Studio Packages
 
  This final step of the pipeline uses an R script, which produced a range of results from the workflow. It is an R script that uses the DESeq2 package to produce the differential expression analysis results that can be used to compare blood and in vitro samples. Following this, various visualised plots were produced to aid in the assessment of the comparison between the two result types. This includes a PCA plot, a volcano plot, an MA plot, and a heatmap, all made with “ggplot” and “pheatmap”. All results from this script should be found in the “/results” directory. 
 
@@ -121,7 +121,7 @@ The human pipeline uses pre-processed data to perform downstream analysis, follo
 
 This is a 3-script pipeline required to obtain DESeq2 results that compare human samples of adenocarcinoma and hepatocellular carcinoma, along with a heatmap, PCA plot, volcano plot and MA plot. This pipeline is much shorter than the Trypanosomes pipeline, as the raw data were already pre-processed, meaning steps like trimming and sample removal were not required. Upon successful completion of a script, any files or results produced by the final step of the pipeline should be found in the human path of the directory. Other files produced in the pipeline can be found in their allocated paths in the human folder as well.
 
-# Reference Indexing with STAR
+### Reference Indexing with STAR
 
 The first script used STAR to build a genome index from the reference genome file, required for downstream analysis, “Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa” and the reference annotation file “Homo_sapiens.GRCh38.115.gtf”. The indexed reference file can be found in the “/reference_files/GRCh38_index”.
 
@@ -129,7 +129,7 @@ Input: reference FASTA and GTF
 
 Output: STAR indexed reference
 
-# Read Mapping and Count Files Creation with STAR
+### Read Mapping and Count Files Creation with STAR
 
 The second script utilises STAR again, as this time it aligned samples alongside the indexed reference produced. This script used STAR’s GeneCounts quantmode to produce the count files required for the final DESeq2 analysis script and also produced sorted BAM files. The count file and sorted BAM outputs can be found in “/mapping/adeno_align” and “/mapping/hepato_align”.
 
@@ -137,7 +137,7 @@ Input: pair-end raw data FASTQ files and indexed reference
 
 Output: ReadsPerGene.out.tab (count files) and sorted BAM files
 
-# Differential Expression Analysis with DESeq2 and R Studio Packages
+### Differential Expression Analysis with DESeq2 and R Studio Packages
 
 This final step for the pipeline is an R script that uses the DESeq2 package to produce the differential expression analysis results that can be used to compare adenocarcinoma and hepatocellular carcinoma samples. Following this, various visualised plots were produced to aid in the assessment of the comparison between the two result types. This includes a PCA plot, a volcano plot, an MA plot, and a heatmap, all made with “ggplot” and “pheatmap”. All results from this script should be found in the “/results” directory.
 
@@ -164,7 +164,7 @@ Certain SLURM setting options at the start of the BASH scripts have placeholders
 
 
 
-### Required Tools and Packages
+# Required Tools and Packages
 
 This section contains all the tools and packages that were used within the pipeline. It is important that the versions used match this pipeline to support reproducibility. Simply click on the names of tools and package listed to access their source pages.
 
@@ -214,7 +214,7 @@ The following points are troubleshooting tips and aim to act as guide if any err
 
 ## References
 
-# Biological background
+### Biological background
 
 1.RNA Sequencing | RNA-Seq methods and workflows [Internet]. emea.illumina.com. Available from: https://emea.illumina.com/techniques/sequencing/rna-sequencing.html
 
@@ -226,13 +226,13 @@ The following points are troubleshooting tips and aim to act as guide if any err
 
 5.Hepatocellular carcinoma (HCC) - Symptoms and causes [Internet]. Mayo Clinic. 2025. Available from: https://www.mayoclinic.org/diseases-conditions/hepatocellular-carcinoma/symptoms-causes/syc-20589101
 
-# Reference File Resources
+### Reference File Resources
 
 6.TriTrypDB [Internet]. Tritrypdb.org. 2026. Available from: https://tritrypdb.org/tritrypdb/app/downloads
 
 7.Ensembl [Internet]. Ensembl.org. 2020. Available from: https://www.ensembl.org/
 
-# Tools and Packages
+### Tools and Packages
 
 8.Andrews S. FastQC a quality control tool for high throughput sequence data [Internet]. Babraham.ac.uk. 2010. Available from: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
@@ -259,11 +259,11 @@ Posit Software, PBC, Boston, MA. URL http://www.posit.co/.
 
 19.Neuwirth E. RColorBrewer: ColorBrewer Palettes [Internet]. R-Packages. 2022. Available from: https://cran.r-project.org/web/packages/RColorBrewer/index.html
 
-# SLURM SBATCH Guide
+## SLURM SBATCH Guide
 
 20.Slurm Workload Manager - sbatch [Internet]. slurm.schedmd.com. Available from: https://slurm.schedmd.com/sbatch.html
 
-## Authors
+### Authors
 
 Jiaan Randhawa-Heer - mbxjr7@nottingham.ac.uk
 
