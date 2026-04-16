@@ -202,23 +202,23 @@ conda activate rotation2 # Activates the conda environment
 
 The following points are troubleshooting tips and aim to act as guide if any errors are occur when running the pipeline.
 
--The “logs” directory can be found within the script directories for both parts of the pipeline, so check these if any errors occur when running scripts.
+- The “logs” directory can be found within the script directories for both parts of the pipeline, so check these if any errors occur when running scripts.
 
--If no outputs can be seen from scripts in “logs”, then ensure the slurm “--output” and “--errors” in the scripts have the correct pathways defined.
+- If no outputs can be seen from scripts in “logs”, then ensure the slurm “--output” and “--errors” in the scripts have the correct pathways defined.
 
--Before running scripts, ensure that all placeholder pathways (“path/to/your_directory/”) have been updated to match the user's system.
+- Before running scripts, ensure that all placeholder pathways (“path/to/your_directory/”) have been updated to match the user's system.
 
--Another potential error that may occur is input file names, so verify these match the names of files inputted in the pipeline.
+- Another potential error that may occur is input file names, so verify these match the names of files inputted in the pipeline.
 
--Additionally, ensure that all output pathways are correct to keep track of successful script outputs.
+- Additionally, ensure that all output pathways are correct to keep track of successful script outputs.
 
--SLURM job settings, such as memory or CPU allocation, may need to be varied for certain jobs, as these can cause errors. A guide to many of the different options can be found [here](https://slurm.schedmd.com/sbatch.html).
+- SLURM job settings, such as memory or CPU allocation, may need to be varied for certain jobs, as these can cause errors. A guide to many of the different options can be found [here](https://slurm.schedmd.com/sbatch.html).
 
--Verify the correct reference files stated in this repository are located in the correct directories, and correctly named in scripts to ensure the successful execution of certain scripts in the pipeline.
+- Verify the correct reference files stated in this repository are located in the correct directories, and correctly named in scripts to ensure the successful execution of certain scripts in the pipeline.
 
--Some errors may arise from a mismatch of tools and package versions, so ensure these are fully updated to the specific versions mentioned previously.
+- Some errors may arise from a mismatch of tools and package versions, so ensure these are fully updated to the specific versions mentioned previously.
 
--Before continuing to a new step in the pipeline, ensure that the scripts have been executed successfully, and the outputs generated have been obtained.
+- Before continuing to a new step in the pipeline, ensure that the scripts have been executed successfully, and the outputs generated have been obtained.
 
 ## References
 
