@@ -236,7 +236,7 @@ The following points are troubleshooting tips and aim to act as guide if any err
 
 8.Andrews S. FastQC a quality control tool for high throughput sequence data [Internet]. Babraham.ac.uk. 2010. Available from: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-9. 1.Krueger F. Babraham Bioinformatics - Trim Galore! [Internet]. www.bioinformatics.babraham.ac.uk. Available from: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+9.Krueger F. Babraham Bioinformatics - Trim Galore! [Internet]. www.bioinformatics.babraham.ac.uk. Available from: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
 
 10.Bowtie 2: fast and sensitive read alignment [Internet]. bowtie-bio.sourceforge.net. Available from: https://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 
@@ -246,8 +246,7 @@ The following points are troubleshooting tips and aim to act as guide if any err
 
 13.HTSeq: High-throughput sequence analysis in Python — HTSeq 2.0.4 documentation [Internet]. htseq.readthedocs.io. Available from: https://htseq.readthedocs.io/en/latest/
 
-14. Posit team (2025). RStudio: Integrated Development Environment for R.
-Posit Software, PBC, Boston, MA. URL http://www.posit.co/.
+14. Posit team (2025). RStudio: Integrated Development Environment for R. Posit Software, PBC, Boston, MA. URL http://www.posit.co/.
 
 15.Bioconductor. DESeq2 [Internet]. Bioconductor. 2017. Available from: https://bioconductor.org/packages/release/bioc/html/DESeq2.html
 
