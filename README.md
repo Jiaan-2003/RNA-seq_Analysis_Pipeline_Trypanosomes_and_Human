@@ -52,11 +52,13 @@ The human reference genome and annotation files (GRCh38) were obtained from Ense
 The Trypanosome pipeline is a core RNA-Seq workflow that includes quality control, trimming, indexing, sample counting and differential expression analysis. 
 
 This is a 7-step pipeline for the trypanosomes analysis that contains the full workflow needed to obtain DESeq2 results of the in vitro and blood samples. Some steps contain 2 scripts (e.g., 1a and 1b), as “a” corresponds to in vitro samples and “b” corresponds to blood samples, so be sure to run both. Upon successful completion of a script, any files or results produced by the final step of the pipeline should be found in the trypanosomes directory. Files produced throughout the pipeline can be found in their respective subdirectories within the trypanosomes folder.
+
 # FastQC Quality Control
 
 This script is the first step of the pipeline that uses FastQC to analyse the quality of the raw blood and in vitro FASTQ files selected for the analysis. This script provides FastQC HTML reports, which can be downloaded and viewed to assess the quality of each sample. A range of statistics can be assessed by these reports, including per-base sequence quality, per-sequence GC content, overrepresented sequences, and much more. Reports can be found in the “/fastqc/in_vitro” and “/fastqc/blood” directories.
 
 Input: Raw FASTQ sample files
+
 Output: FastQC reports
 
 # Read Trimming with Trim Galore
@@ -64,6 +66,7 @@ Output: FastQC reports
 This next script uses Trim Galore to trim the reads by removing any low-quality bases and adapter sequences from the reads. This provides updated trimmed reports of each sample and trimmed reads that have been quality-controlled for further use in the pipeline. Reports and trimmed data can be found in the “/trim_galore/in_vitro” and “/trim_galore/blood” directories.
 
 Input: Raw FASTQ files
+
 Output: Trimmed FASTQ files and Trimmed FastQC reports (txt and html)
 
 # Reference Indexing with Bowtie2-build
@@ -71,6 +74,7 @@ Output: Trimmed FASTQ files and Trimmed FastQC reports (txt and html)
 This script utilises Bowtie2-build to create an index from the reference genome file “TriTrypDB-68_TbruceiTREU927_Genome.fasta” for use downstream in the pipeline. The indexed files can be found in the “/references_files/index” directory.
 
 Input: Reference genome
+
 Output: Bowtie2 index files
 
 
@@ -79,7 +83,9 @@ Output: Bowtie2 index files
 This step uses a script to map reads from in vitro and blood samples to the indexed reference genome, producing SAM files for both sample types. SAM files can be found in the “/mapping_bowtie2/sam_files_in_vitro” and “/mapping_bowtie2/sam_files_blood” directories.
 
 Input: Trimmed FASTQ files
+
 Reference: Indexed genome
+
 Output: SAM files
 
 # Conversion from SAM to BAM, Sorting and Indexing with SAMtools
@@ -87,6 +93,7 @@ Output: SAM files
 This script uses SAMtools to first convert the SAM files for samples into BAM files for downstream use, and then sort and index the files. The converted BAM files can be found in the “/mapping_bowtie2/bam_files/in_vitro” and “/mapping_bowtie2/bam_files/blood” directories. The sorted and indexed files can be found in the “/mapping_bowtie2/bam_files/in_vitro/sorted” and “/mapping_bowtie2/bam_files/blood/sorted” directories.
 
 Input: SAM files
+
 Output: BAM files, sorted BAM files and index bam.bai files
 
 # Sample Counting with HTSeq
@@ -94,7 +101,9 @@ Output: BAM files, sorted BAM files and index bam.bai files
 This stage involves a script that applies HTSeq-count on each sorted BAM file for the samples, along with a “TriTrypDB-68_TbruceiTREU927.gff” file as an annotation file. The count text file for each sample can be found in “/htseq/in_vitro” and “/htseq/blood” directories. The gff file is located in the reference files (“/references_files”).
 
 Input: sorted BAM files
+
 Annotation input: gff file
+
 Output: Count text (txt) files
 
 # Differential Expression Analysis with DESeq2 and R Studio Packages
@@ -102,6 +111,7 @@ Output: Count text (txt) files
  This final step of the pipeline uses an R script, which produced a range of results from the workflow. It is an R script that uses the DESeq2 package to produce the differential expression analysis results that can be used to compare blood and in vitro samples. Following this, various visualised plots were produced to aid in the assessment of the comparison between the two result types. This includes a PCA plot, a volcano plot, an MA plot, and a heatmap, all made with “ggplot” and “pheatmap”. All results from this script should be found in the “/results” directory. 
 
 Input: all trimmed count text files
+
 Output: DESeq2 (differential expression analysis) results table, heatmap, PCA plot, volcano plot and MA plot.
 
 
@@ -116,6 +126,7 @@ This is a 3-script pipeline required to obtain DESeq2 results that compare human
 The first script used STAR to build a genome index from the reference genome file, required for downstream analysis, “Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa” and the reference annotation file “Homo_sapiens.GRCh38.115.gtf”. The indexed reference file can be found in the “/reference_files/GRCh38_index”.
 
 Input: reference FASTA and GTF
+
 Output: STAR indexed reference
 
 # Read Mapping and Count Files Creation with STAR
@@ -123,12 +134,15 @@ Output: STAR indexed reference
 The second script utilises STAR again, as this time it aligned samples alongside the indexed reference produced. This script used STAR’s GeneCounts quantmode to produce the count files required for the final DESeq2 analysis script and also produced sorted BAM files. The count file and sorted BAM outputs can be found in “/mapping/adeno_align” and “/mapping/hepato_align”.
 
 Input: pair-end raw data FASTQ files and indexed reference
+
 Output: ReadsPerGene.out.tab (count files) and sorted BAM files
 
 # Differential Expression Analysis with DESeq2 and R Studio Packages
 
 This final step for the pipeline is an R script that uses the DESeq2 package to produce the differential expression analysis results that can be used to compare adenocarcinoma and hepatocellular carcinoma samples. Following this, various visualised plots were produced to aid in the assessment of the comparison between the two result types. This includes a PCA plot, a volcano plot, an MA plot, and a heatmap, all made with “ggplot” and “pheatmap”. All results from this script should be found in the “/results” directory.
+
 Input: ReadsPerGene.out.tab files
+
 Output: DESeq2 (differential expression analysis) results table, heatmap, PCA plot, volcano plot and MA plot. 
 
 ## Key Steps for Reproducibility and Usage
