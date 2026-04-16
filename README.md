@@ -1,4 +1,5 @@
 ### LIFE4136-Rotation2: RNA-seq Analysis Pipeline: Trypanosomes and Human Data
+
 This repository contains an RNA-Seq workflow produced for LIFE4136 Rotation 2 Coursework. The study includes Trypanosome blood and in vitro samples, as well as human cancer samples of adenocarcinoma and hepatocellular carcinoma.
 
 ## Introduction and Biological Background
@@ -251,6 +252,9 @@ Posit Software, PBC, Boston, MA. URL http://www.posit.co/.
 ## Authors
 
 Jiaan Randhawa-Heer - mbxjr7@nottingham.ac.uk
+
 Aabha Shailesh Salunkhe - mbxas28@nottingham.ac.uk
+
 Smriti Chaudary - mbxsc9@nottingham.ac.uk
+
 Mohammad Parsa Faraji - mbxmf5@nottingham.ac.uk
