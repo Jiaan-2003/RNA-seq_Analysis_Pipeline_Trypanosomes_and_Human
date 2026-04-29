@@ -14,6 +14,15 @@ The human dataset focused on two types of cancer samples, adenocarcinoma (AC) an
 
 Both of these datasets provided vital raw data that could be processed in the pipeline so an RNA-Seq analysis could be completed. The project aimed to demonstrate how appropriate bioinformatics pipelines can produce biologically correct and interpretable results that may help to identify potential therapeutic targets or biomarkers to combat diseases such as those involved in this study.
 
+## Clone the Repository
+
+Cloning this repository with the following command will help to ensure that all the correct scripts, folders and directories are set up correctly for the pipeline:
+
+```{r}
+git clone https://github.com/Jiaan-2003/RNA-seq_Analysis_Pipeline_Trypanosomes_and_Human.git
+cd RNA-seq_Analysis_Pipeline_Trypanosomes_and_Human
+```
+
 ## About the Data
 
 These scripts include an assumed "raw_data" directory, which is empty in this repository due to large file sizes. Both datasets were copied from a shared HPC resource into working directories prior to running the original pipeline
@@ -152,7 +161,8 @@ This final step for the pipeline is an R script that uses the DESeq2 package to 
 Ideally, this pipeline should be reproducible with the raw data discussed in this GitHub repo.  However, the reproducibility of this pipeline does have certain requirements, and there are some key tips to know when using the pipeline:
 
 - All of the BASH SLURM scripts were run on an HPC system, making an HPC essential for this workflow.
-Certain SLURM setting options at the start of the BASH scripts have placeholders (e.g., “logs” file paths, SLURM job email address, etc.); these placeholders must be updated to the correct file/user setup.
+
+- Certain SLURM setting options at the start of the BASH scripts have placeholders (e.g., “logs” file paths, SLURM job email address, etc.); these placeholders must be updated to the correct file/user setup.
 
 - The directory “logs” is in the same directory as the scripts for Trypanosomes and humans; it contains SLURM outputs and error logs, which are useful for identifying any errors that caused a script to fail.
 
